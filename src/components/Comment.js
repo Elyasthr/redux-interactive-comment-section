@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Reply from './Reply';
 
 const Comment = ({ comment }) => {
-  console.log(comment)
+  const user = useSelector((state) => state.userReducer)
+  console.log(user)
   return (
     <li>
       <h2>{comment.user.username}</h2>
@@ -16,6 +18,15 @@ const Comment = ({ comment }) => {
             )))
         }
       </ul>
+      {
+        user.pseudo === comment.user.username && (
+          <>
+            <input type="submit" value="edit" />
+            <input type="submit" value="delete" />
+          </>
+        )
+      }
+
     </li>
   );
 };
