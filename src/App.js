@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Comment from './components/Comment';
+import { isEmpty } from './components/Utils';
 
-function App() {
+const App = () => {
+  const comments = useSelector((state) => state.commentReducer);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='root'>
+      <div className='container'>
+        <ul>
+          {
+            !isEmpty(comments) && (
+              comments.map((comment) => (
+                <Comment comment={comment} key={comment.id} />
+              ))
+            )
+          }
+        </ul>
+        <form>
+          <textarea></textarea>
+          <button type='submit'>SEND</button>
+        </form>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
