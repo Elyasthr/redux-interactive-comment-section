@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Comment from './components/Comment';
 import { isEmpty } from './components/Utils';
-import { postComment } from './store/actions/comment.action';
+import { getComment, postComment } from './store/actions/comment.action';
 
 const App = () => {
   const comments = useSelector((state) => state.commentReducer);
@@ -10,7 +10,7 @@ const App = () => {
   const [myComment, setMyComment] = useState('');
   const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const dataComment = {
       content: myComment,
@@ -25,7 +25,9 @@ const App = () => {
       },
       replies: []
     }
-    dispatch(postComment(dataComment))
+    await dispatch(postComment(dataComment)) //On attend que le nouveau post soit enregistré
+    dispatch(getComment())
+    setMyComment('');
   }
 
   return (
@@ -41,7 +43,7 @@ const App = () => {
           }
         </ul>
         <form onSubmit={handleSubmit}>
-          <textarea onChange={(e) => setMyComment(e.target.value)}></textarea>
+          <textarea value={myComment} onChange={(e) => setMyComment(e.target.value)}></textarea>
           <button type='submit'>SEND</button>
         </form>
       </div>

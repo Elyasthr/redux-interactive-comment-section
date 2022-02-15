@@ -1,14 +1,52 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteComment, putComment } from '../store/actions/comment.action';
 import Reply from './Reply';
 
 const Comment = ({ comment }) => {
-  const user = useSelector((state) => state.userReducer)
-  console.log(user)
+  const [editToggle, setEditToggle] = useState(false);
+  const [editComment, setEditComment] = useState(comment.content);
+  const user = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  const handleValidate = () => {
+    setEditToggle(!editToggle);
+    const editPost = {
+      content: editComment,
+      createdAt: comment.createdAt,
+      score: comment.score,
+      user: {
+        image: {
+          png: comment.user.image.png,
+          webp: comment.user.image.webp
+        },
+        username: comment.user.username
+      },
+      replies: comment.replies,
+      id: comment.id
+    }
+    dispatch(putComment(editPost))
+  }
   return (
     <li>
       <h2>{comment.user.username}</h2>
-      <p>{comment.content}</p>
+      {
+        user.pseudo === comment.user.username && (
+          <>
+            {
+              editToggle
+                ? <input type='submit' onClick={handleValidate} value='validate' />
+                : <input type="submit" onClick={() => setEditToggle(!editToggle)} value="edit" />
+            }
+            <input type="submit" value="delete" onClick={() => dispatch(deleteComment(comment.id))} />
+          </>
+        )
+      }
+      {
+        editToggle
+          ? <textarea value={editComment} onChange={(e) => setEditComment(e.target.value)}></textarea>
+          : <p>{comment.content}</p>
+      }
       <p>score {comment.score}</p>
       <ul>
         {
@@ -18,14 +56,6 @@ const Comment = ({ comment }) => {
             )))
         }
       </ul>
-      {
-        user.pseudo === comment.user.username && (
-          <>
-            <input type="submit" value="edit" />
-            <input type="submit" value="delete" />
-          </>
-        )
-      }
 
     </li>
   );
