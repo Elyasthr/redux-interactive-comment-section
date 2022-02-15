@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteComment, putComment } from '../store/actions/comment.action';
+import FormReply from './FormReply';
 import Reply from './Reply';
 
 const Comment = ({ comment }) => {
@@ -8,6 +9,7 @@ const Comment = ({ comment }) => {
   const [editComment, setEditComment] = useState(comment.content);
   const user = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  const [commentReply, setCommentReply] = useState(false)
 
   const handleValidate = () => {
     setEditToggle(!editToggle);
@@ -50,13 +52,21 @@ const Comment = ({ comment }) => {
       <p>score {comment.score}</p>
       <ul>
         {
-          comment.replies.length > 1 && (
+          comment.replies.length >= 1 && (
             comment.replies.map((reply) => (
-              <Reply reply={reply} key={reply.id} />
+              <Reply reply={reply} comment={comment} key={reply.id} />
             )))
         }
       </ul>
-
+      {commentReply
+        ? (
+          <>
+            <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
+            <FormReply comment={comment} onClick={() => (setCommentReply(false))} />
+          </>
+        )
+        : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
+      }
     </li>
   );
 };
