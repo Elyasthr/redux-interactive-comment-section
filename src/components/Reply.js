@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComment, putComment } from '../store/actions/comment.action';
-import FormReply from './FormReply';
+import FormComment from './FormComment';
 
 const Reply = ({ reply, comment }) => {
   const [editToggle, setEditToggle] = useState(false);
@@ -84,7 +84,7 @@ const Reply = ({ reply, comment }) => {
         ? (
           <>
             <input type="submit" value="Cancel" onClick={() => setCommentReplyy(!commentReplyy)} />
-            <FormReply reply={reply} comment={comment} onClick={() => (setCommentReplyy(false))} />
+            <FormComment reply={reply} comment={comment} onClick={() => (setCommentReplyy(false))} />
           </>
         )
         : <input type="submit" value="Reply" onClick={() => setCommentReplyy(!commentReplyy)} />

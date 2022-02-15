@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteComment, putComment } from '../store/actions/comment.action';
-import FormReply from './FormReply';
+import FormComment from './FormComment';
 import Reply from './Reply';
 
 const Comment = ({ comment }) => {
@@ -62,7 +62,7 @@ const Comment = ({ comment }) => {
         ? (
           <>
             <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
-            <FormReply comment={comment} onClick={() => (setCommentReply(false))} />
+            <FormComment comment={comment} onClick={() => (setCommentReply(false))} />
           </>
         )
         : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
