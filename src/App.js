@@ -7,8 +7,6 @@ import { isEmpty } from './components/Utils';
 const App = () => {
   const comments = useSelector((state) => state.commentReducer);
 
-  // EST CE QUE JE NE POURRAI PAS FAIRE UN FORMULAIRE ET UN COMMENTAIRE POUR LES DEUX BESOINS ?
-
   return (
     <div className='root'>
       <div className='container'>
@@ -17,7 +15,7 @@ const App = () => {
             !isEmpty(comments) && (
               comments.map((comment) => (
 
-                <Comment comment={comment} key={comment.id} />
+                <Comment comment={comment} key={comment.id + 1} />
 
               ))
             )
