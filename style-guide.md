@@ -1,11 +1,4 @@
-# Front-end Style Guide
 
-## Layout
-
-The designs were created to the following widths:
-
-- Mobile: 375px
-- Desktop: 1440px
 
 ## Colors
 
@@ -24,13 +17,5 @@ The designs were created to the following widths:
 - Very light gray: hsl(228, 33%, 97%)
 - White: hsl(0, 0%, 100%)
 
-## Typography
 
-### Body Copy
 
-- Font size (paragraph): 16px
-
-### Font
-
-- Family: [Rubik](https://fonts.google.com/specimen/Rubik)
-- Weights: 400, 500, 700

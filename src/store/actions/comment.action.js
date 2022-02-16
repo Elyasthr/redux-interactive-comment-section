@@ -28,7 +28,6 @@ export const postComment = (dataComment) => {
 }
 
 export const putComment = (dataComment) => {
-  console.log(dataComment)
   return (dispatch) => {
     return axios
       .put(`http://localhost:3000/comments/${dataComment.id}`, {
