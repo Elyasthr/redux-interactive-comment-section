@@ -1,6 +1,6 @@
 {
   "currentUser": {
-    "image": {
+    "image": { 
       "png": "./images/avatars/image-juliusomo.png",
       "webp": "./images/avatars/image-juliusomo.webp"
     },
@@ -8,18 +8,18 @@
   },
   "comments": [
     {
+      "id": 1,
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "1 month ago",
       "score": 12,
       "user": {
-        "image": {
+        "image": { 
           "png": "./images/avatars/image-amyrobson.png",
           "webp": "./images/avatars/image-amyrobson.webp"
         },
         "username": "amyrobson"
       },
-      "replies": [],
-      "id": 1
+      "replies": []
     },
     {
       "id": 2,
@@ -27,7 +27,7 @@
       "createdAt": "2 weeks ago",
       "score": 5,
       "user": {
-        "image": {
+        "image": { 
           "png": "./images/avatars/image-maxblagun.png",
           "webp": "./images/avatars/image-maxblagun.webp"
         },
@@ -41,7 +41,7 @@
           "score": 4,
           "replyingTo": "maxblagun",
           "user": {
-            "image": {
+            "image": { 
               "png": "./images/avatars/image-ramsesmiron.png",
               "webp": "./images/avatars/image-ramsesmiron.webp"
             },
@@ -55,7 +55,7 @@
           "score": 2,
           "replyingTo": "ramsesmiron",
           "user": {
-            "image": {
+            "image": { 
               "png": "./images/avatars/image-juliusomo.png",
               "webp": "./images/avatars/image-juliusomo.webp"
             },

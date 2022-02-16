@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getComment } from '../store/actions/comment.action';
 import { deleteComment, putComment } from '../store/actions/comment.action';
 import FormComment from './FormComment';
+import Likes from './Likes';
 
 const Comment = ({ reply, comment }) => {
 
@@ -15,18 +16,8 @@ const Comment = ({ reply, comment }) => {
   const handleValidate = () => {
     setEditToggle(!editToggle);
     const editPost = {
-      content: editComment,
-      createdAt: comment.createdAt,
-      score: comment.score,
-      user: {
-        image: {
-          png: comment.user.image.png,
-          webp: comment.user.image.webp
-        },
-        username: comment.user.username
-      },
-      replies: comment.replies,
-      id: comment.id
+      ...comment,
+      content: editComment
     }
     dispatch(putComment(editPost))
   }
@@ -39,20 +30,10 @@ const Comment = ({ reply, comment }) => {
       }
       return com
     })
-    //regarder si je peut pas retourner un ...arr plutot que tout retapper
+
     const editReply = {
-      content: comment.content,
-      createdAt: comment.createdAt,
-      score: comment.score,
-      user: {
-        image: {
-          png: comment.user.image.png,
-          webp: comment.user.image.webp
-        },
-        username: comment.user.username
-      },
-      replies: editReplyArray,
-      id: comment.id
+      ...comment,
+      replies: editReplyArray
     }
     await dispatch(putComment(editReply))
     dispatch(getComment())
@@ -63,18 +44,8 @@ const Comment = ({ reply, comment }) => {
     const deleteReplyArray = comment.replies.filter((com) => com.id !== reply.id)
 
     const deleteReply = {
-      content: comment.content,
-      createdAt: comment.createdAt,
-      score: comment.score,
-      user: {
-        image: {
-          png: comment.user.image.png,
-          webp: comment.user.image.webp
-        },
-        username: comment.user.username
-      },
-      replies: deleteReplyArray,
-      id: comment.id
+      ...comment,
+      replies: deleteReplyArray
     }
     await dispatch(putComment(deleteReply))
     dispatch(getComment())
@@ -82,7 +53,10 @@ const Comment = ({ reply, comment }) => {
 
   return (
     <li>
+      <Likes reply={reply} comment={comment} />
+
       <h2>{reply ? reply.user.username : comment.user.username}</h2>
+
       {
         user.username === (reply ? reply.user.username : comment.user.username) && (
           <>
@@ -95,14 +69,16 @@ const Comment = ({ reply, comment }) => {
           </>
         )
       }
+
       {
         editToggle
           ? <textarea value={editComment} onChange={(e) => setEditComment(e.target.value)}></textarea>
           : <p>{reply ? "@" + reply.replyingTo + " " + reply.content : comment.content}</p>
       }
-      <p>score {reply ? reply.score : comment.score}</p>
 
-      {!reply &&
+
+      {
+        !reply &&
         <ul>
           {
             comment.replies.length >= 1 && (
@@ -113,14 +89,15 @@ const Comment = ({ reply, comment }) => {
         </ul>
       }
 
-      {commentReply
-        ? (
-          <>
-            <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
-            <FormComment reply={reply} comment={comment} />
-          </>
-        )
-        : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
+      {
+        commentReply
+          ? (
+            <>
+              <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
+              <FormComment reply={reply} comment={comment} />
+            </>
+          )
+          : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
       }
     </li>
   );

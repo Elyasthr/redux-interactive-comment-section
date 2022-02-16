@@ -17,18 +17,18 @@ const FormComment = ({ reply, comment }) => {
       score: 0,
       user: {
         image: {
-          png: "./images/avatars/image-amyrobson.png",
-          webp: "./images/avatars/image-amyrobson.webp"
+          png: "./images/avatars/image-juliusomo.png",
+          webp: "./images/avatars/image-juliusomo.webp"
         },
         username: user.username
       },
       replies: []
     }
-    await dispatch(postComment(dataComment)) //On attend que le nouveau post soit enregistré
+    await dispatch(postComment(dataComment)) //Waiting post to register
     dispatch(getComment())
     setMyReply('');
   }
-  //regler soucis de fixer id car doublons risque de supp plusieur
+  //fix Id problem
   const handleReply = async (e) => {
     e.preventDefault();
     const dataReply = {
@@ -47,20 +47,10 @@ const FormComment = ({ reply, comment }) => {
     }
 
     const dataCommentEdit = {
-      content: comment.content,
-      createdAt: comment.createdAt,
-      score: comment.score,
-      user: {
-        image: {
-          png: comment.user.image.png,
-          webp: comment.user.image.webp
-        },
-        username: comment.user.username
-      },
-      replies: [...comment.replies, dataReply],
-      id: comment.id
+      ...comment,
+      replies: [...comment.replies, dataReply]
     }
-    await dispatch(putComment(dataCommentEdit)) //On attend que le nouveau post soit enregistré
+    await dispatch(putComment(dataCommentEdit))
     dispatch(getComment())
     setMyReply('');
   }
