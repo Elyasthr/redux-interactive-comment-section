@@ -52,10 +52,15 @@ const Comment = ({ reply, comment }) => {
   }
 
   return (
-    <li>
-      <Likes reply={reply} comment={comment} />
+    <li className='card-container'>
 
-      <h2>{reply ? reply.user.username : comment.user.username}</h2>
+      <div className='card-profil'>
+        {/* <img src={reply ? reply.user.png : comment.user.image.png} alt='profil-pic' /> */}
+        <div className='card-profil-pic'>pic</div>
+        <h2>{reply ? reply.user.username : comment.user.username}</h2>
+        <h3>{reply ? reply.createdAt : comment.createdAt}</h3>
+      </div>
+
 
       {
         user.username === (reply ? reply.user.username : comment.user.username) && (
@@ -88,17 +93,19 @@ const Comment = ({ reply, comment }) => {
           }
         </ul>
       }
-
-      {
-        commentReply
-          ? (
-            <>
-              <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
-              <FormComment reply={reply} comment={comment} />
-            </>
-          )
-          : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
-      }
+      <div className='card-bottom'>
+        <Likes reply={reply} comment={comment} />
+        {
+          commentReply
+            ? (
+              <>
+                <input type="submit" value="Cancel" onClick={() => setCommentReply(!commentReply)} />
+                <FormComment reply={reply} comment={comment} />
+              </>
+            )
+            : <input type="submit" value="Reply" onClick={() => setCommentReply(!commentReply)} />
+        }
+      </div>
     </li>
   );
 };
