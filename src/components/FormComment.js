@@ -20,7 +20,7 @@ const FormComment = ({ reply, comment }) => {
           png: "./images/avatars/image-amyrobson.png",
           webp: "./images/avatars/image-amyrobson.webp"
         },
-        username: user.pseudo
+        username: user.username
       },
       replies: []
     }
@@ -42,7 +42,7 @@ const FormComment = ({ reply, comment }) => {
           png: "./images/avatars/image-amyrobson.png",
           webp: "./images/avatars/image-amyrobson.webp"
         },
-        username: user.pseudo
+        username: user.username
       }
     }
 

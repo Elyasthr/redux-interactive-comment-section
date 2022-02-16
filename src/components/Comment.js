@@ -84,7 +84,7 @@ const Comment = ({ reply, comment }) => {
     <li>
       <h2>{reply ? reply.user.username : comment.user.username}</h2>
       {
-        user.pseudo === (reply ? reply.user.username : comment.user.username) && (
+        user.username === (reply ? reply.user.username : comment.user.username) && (
           <>
             {
               editToggle
