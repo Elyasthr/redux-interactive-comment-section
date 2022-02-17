@@ -60,15 +60,13 @@ const FormComment = ({ reply, comment }) => {
   }
 
   return (
-    <div className='form-container'>
-      <form className={"form-comment"} onSubmit={comment ? handleReply : handleSubmit}>
-        <textarea value={myReply} onChange={(e) => setMyReply(e.target.value)} placeholder="Add a comment…"></textarea>
-        <div className='form-bottom'>
-          <div className='card-profil-pic'>pic</div>
-          <button type='submit'>{comment ? "REPLY" : "SEND"}</button>
-        </div>
-      </form>
-    </div>
+    <form className={"form-comment"} onSubmit={comment ? handleReply : handleSubmit}>
+      <textarea value={myReply} onChange={(e) => setMyReply(e.target.value)} placeholder="Add a comment…"></textarea>
+      <div className='form-bottom'>
+        <div className='card-profil-pic'>pic</div>
+        <button type='submit'>{comment ? "REPLY" : "SEND"}</button>
+      </div>
+    </form>
   );
 };
 

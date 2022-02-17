@@ -1,9 +1,11 @@
+import { formatDistance, toDate } from 'date-fns';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComment } from '../store/actions/comment.action';
 import { deleteComment, putComment } from '../store/actions/comment.action';
 import FormComment from './FormComment';
 import Likes from './Likes';
+
 
 const Comment = ({ reply, comment }) => {
   const [isDisplay, setIsDisplay] = useState(false)
@@ -55,7 +57,7 @@ const Comment = ({ reply, comment }) => {
     <>
       {
         isDisplay &&
-        <><div className='test'></div>
+        <><div className='confirm-background'></div>
           <div className={'confirm'}>
             <h5>Delete comment</h5>
             <p>Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
@@ -74,7 +76,16 @@ const Comment = ({ reply, comment }) => {
           {/* <img src={reply ? reply.user.png : comment.user.image.png} alt='profil-pic' /> */}
           <div className='card-profil-pic'>pic</div>
           <h2>{reply ? reply.user.username : comment.user.username}</h2>
-          <h3>{reply ? reply.createdAt : comment.createdAt}</h3>
+          {user.username === (reply ? reply.user.username : comment.user.username) && <div className='you'>you</div>}
+          <h3>{
+            reply
+              ? typeof (reply.createdAt) === 'string'
+                ? reply.createdAt
+                : formatDistance(toDate(reply.createdAt), new Date(), { addSuffixe: true })
+              : typeof (comment.createdAt) === 'string'
+                ? comment.createdAt
+                : formatDistance(toDate(comment.createdAt), new Date(), { addSuffixe: true })
+          }</h3>
         </div>
 
         {
