@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postComment } from '../store/actions/comment.action';
-import { getComment, putComment } from '../store/actions/comment.action';
+import { getComment, editReplies, postComment } from '../store/actions/comment.action';
 import { isEmpty } from './Utils';
 
 const FormComment = ({ reply, comment }) => {
@@ -53,7 +52,7 @@ const FormComment = ({ reply, comment }) => {
         ...comment,
         replies: [...comment.replies, dataReply]
       }
-      await dispatch(putComment(dataCommentEdit))
+      await dispatch(editReplies(dataCommentEdit))
       dispatch(getComment())
       setMyReply('');
     }

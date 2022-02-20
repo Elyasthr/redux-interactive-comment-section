@@ -1,8 +1,8 @@
 import { formatDistance, toDate } from 'date-fns';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComment } from '../store/actions/comment.action';
-import { deleteComment, putComment } from '../store/actions/comment.action';
+import { getComment, editReplies, editComment, deleteComment } from '../store/actions/comment.action';
+import { } from '../store/actions/comment.action';
 import FormComment from './FormComment';
 import Likes from './Likes';
 
@@ -10,7 +10,7 @@ import Likes from './Likes';
 const Comment = ({ reply, comment }) => {
   const [isDisplay, setIsDisplay] = useState(false)
   const [editToggle, setEditToggle] = useState(false);
-  const [editComment, setEditComment] = useState(reply ? reply.content : comment.content);
+  const [editMyComment, setEditMyComment] = useState(reply ? reply.content : comment.content);
   const user = useSelector((state) => state.userReducer);
   const [commentReply, setCommentReply] = useState(false)
   const dispatch = useDispatch();
@@ -18,26 +18,26 @@ const Comment = ({ reply, comment }) => {
   const handleValidate = () => {
     setEditToggle(!editToggle);
     const editPost = {
-      ...comment,
-      content: editComment
+      id: comment.id,
+      content: editMyComment
     }
-    dispatch(putComment(editPost))
+    dispatch(editComment(editPost))
   }
 
   const handleEdit = async () => {
     setEditToggle(!editToggle);
     const editReplyArray = comment.replies.map((com) => {
       if (com.id === reply.id) {
-        return { ...com, content: editComment }
+        return { ...com, content: editMyComment }
       }
       return com
     })
 
     const editReply = {
-      ...comment,
+      id: comment.id,
       replies: editReplyArray
     }
-    await dispatch(putComment(editReply))
+    await dispatch(editReplies(editReply))
     dispatch(getComment())
   }
 
@@ -46,10 +46,10 @@ const Comment = ({ reply, comment }) => {
     const deleteReplyArray = comment.replies.filter((com) => com.id !== reply.id)
 
     const deleteReply = {
-      ...comment,
+      id: comment.id,
       replies: deleteReplyArray
     }
-    await dispatch(putComment(deleteReply))
+    await dispatch(editReplies(deleteReply))
     dispatch(getComment())
   }
 
@@ -90,7 +90,7 @@ const Comment = ({ reply, comment }) => {
 
         {
           editToggle
-            ? <textarea value={editComment} onChange={(e) => setEditComment(e.target.value)}></textarea>
+            ? <textarea value={editMyComment} onChange={(e) => setEditMyComment(e.target.value)}></textarea>
             : <>{reply ? <p><span>@{reply.replyingTo}</span> {reply.content}</p> : <p>{comment.content}</p>}</>
         }
 

@@ -1,11 +1,4 @@
 {
-  "currentUser": {
-    "image": {
-      "png": "./images/avatars/image-juliusomo.png",
-      "webp": "./images/avatars/image-juliusomo.webp"
-    },
-    "username": "Elyas"
-  },
   "comments": [
     {
       "id": 1,
@@ -63,20 +56,6 @@
           }
         }
       ]
-    },
-    {
-      "content": "This is a test",
-      "createdAt": 1645095087571,
-      "score": 1,
-      "user": {
-        "image": {
-          "png": "./images/avatars/image-juliusomo.png",
-          "webp": "./images/avatars/image-juliusomo.webp"
-        },
-        "username": "Elyas"
-      },
-      "replies": [],
-      "id": 3
     }
   ]
 }

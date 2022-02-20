@@ -1,11 +1,10 @@
 import axios from "axios";
-
 export const GET_USER = "GET_USER";
 
 export const getUser = () => {
   return (dispatch) => {
     return axios
-      .get('http://localhost:3000/currentUser')
+      .get(`${process.env.REACT_APP_API_URL}/${process.env.CURRENT_USER}`)
       .then((res) => {
         dispatch({ type: GET_USER, payload: res.data })
       })
