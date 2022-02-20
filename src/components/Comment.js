@@ -1,4 +1,4 @@
-import { formatDistance, toDate } from 'date-fns';
+import { formatDistanceToNow, toDate } from 'date-fns';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComment, editReplies, editComment, deleteComment } from '../store/actions/comment.action';
@@ -81,10 +81,10 @@ const Comment = ({ reply, comment }) => {
             reply
               ? typeof (reply.createdAt) === 'string'
                 ? reply.createdAt
-                : formatDistance(toDate(reply.createdAt), new Date(), { addSuffixe: true })
+                : formatDistanceToNow(toDate(reply.createdAt),{ addSuffix: true })
               : typeof (comment.createdAt) === 'string'
                 ? comment.createdAt
-                : formatDistance(toDate(comment.createdAt), new Date(), { addSuffixe: true })
+                : formatDistanceToNow(toDate(comment.createdAt),{ addSuffix: true })
           }</h3>
         </div>
 
