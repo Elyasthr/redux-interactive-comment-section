@@ -131,7 +131,7 @@ const Comment = ({ reply, comment }) => {
         <ul className='subcomment-container'>
           {
             comment.replies.length >= 1 && (
-              comment.replies.map((reply) => (
+              comment.replies.sort((a,b)=> a.createdAt - b.createdAt).map((reply) => (
                 <Comment reply={reply} comment={comment} key={reply.id} />
               )))
           }

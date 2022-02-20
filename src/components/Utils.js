@@ -6,3 +6,7 @@ export const isEmpty = (value) => {
     (typeof value === "string" && value.trim().length === 0)
   );
 };
+
+export const getRandomArbitrary = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+}

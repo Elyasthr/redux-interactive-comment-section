@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComment, editReplies, postComment } from '../store/actions/comment.action';
-import { isEmpty } from './Utils';
+import { getRandomArbitrary, isEmpty } from './Utils';
 
 const FormComment = ({ reply, comment }) => {
   const user = useSelector((state) => state.userReducer);
@@ -34,7 +34,7 @@ const FormComment = ({ reply, comment }) => {
     e.preventDefault();
     if (!isEmpty(myReply)) {
       const dataReply = {
-        id: comment.replies.length + 1,
+        id: getRandomArbitrary(10,34534),
         content: myReply,
         createdAt: Date.now(),
         score: 0,
