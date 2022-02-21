@@ -1,0 +1,122 @@
+p{
+  margin: 16px 0;
+  color: $Neutral-color-2;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $light;
+}
+
+span{
+  color: $primary-color-1;
+  font-weight: $regular;
+}
+
+.card-container{
+  max-width: 343px;
+  border-radius: 8px;
+  background-color: $Neutral-color-5;
+  margin: 16px 0;
+  padding: 16px;
+}
+
+
+.subcomment-container{
+  border-left: 2px solid $Neutral-color-3;
+  max-width: 343px;
+  margin: 16px 0;
+  padding: 0 0 0 16px;
+  .subcard-container{
+    max-width: 343px;
+    border-radius: 8px;
+    background-color: $Neutral-color-5;
+    margin: 16px 0;
+    padding: 16px;
+  }
+}
+
+.card-profil{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  .card-profil-pic{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $Neutral-color-4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: $primary-color-1;
+  }
+  h2{
+    font-weight: $regular;
+    font-size: 16px;
+    line-height: 19px;  
+    color: $Neutral-color-1;  
+    margin: 0 8px
+  }
+  .you{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 19px;
+    width: 36px;
+    color: $Neutral-color-5;
+    background-color: $primary-color-1;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 15px;
+    margin-right: 8px;
+  }
+  h3{
+    font-weight: $light;
+    font-size: 16px;
+    line-height: 24px;
+    color: $Neutral-color-2;
+    margin-left: 8px;
+  }
+  
+}
+
+
+.card-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  .btn-reply{
+    
+    all: unset;
+    cursor: pointer;
+    color: $primary-color-1;
+    font-style: normal;
+    font-weight: $regular;
+    font-size: 16px;
+    line-height: 24px;
+    svg{
+      margin-right: 8px;
+      fill: $primary-color-1;
+    }
+    &:hover{
+      color: $primary-color-3;
+      svg{
+        fill: $primary-color-3;
+      }
+    }
+  }
+
+  .delete{
+    color: $primary-color-2;
+    svg{
+      fill: $primary-color-2;
+    }
+    &:hover{
+      color: $primary-color-4;
+      svg{
+        fill: $primary-color-4;
+      }
+    }
+  }
+}

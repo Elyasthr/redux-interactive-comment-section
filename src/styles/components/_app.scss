@@ -1,0 +1,15 @@
+.root{
+  max-width: 1439px;
+  min-height: 100vh;
+  background-color: $Neutral-color-4;
+  @include media-min("desktop"){
+    max-width: none;
+  }
+}
+
+.container{
+  width: 375px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 16px;
+}

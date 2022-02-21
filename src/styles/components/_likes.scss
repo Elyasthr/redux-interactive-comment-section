@@ -1,0 +1,31 @@
+.score-container{
+  border-radius: 8px;
+  background-color: $Neutral-color-4;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: $primary-color-1;
+  font-weight: $regular;
+
+  h4{
+    font-weight: $regular;
+  }
+
+  button{
+    all: unset;
+    cursor: pointer;
+    svg{
+      fill: $primary-color-3;
+      &:hover{
+        fill: $primary-color-1;
+      }
+    }
+  }
+  
+  .btn-minus{
+    display: flex;
+  }
+  
+}

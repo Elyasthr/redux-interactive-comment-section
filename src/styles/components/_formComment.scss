@@ -1,0 +1,64 @@
+
+.form-comment{
+  max-width: 343px;
+  border: 1px solid $Neutral-color-5;
+  border-radius: 8px;
+  background-color: $Neutral-color-5;
+  margin: 16px 0;
+  padding: 16px;
+
+  .form-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  button{
+    width: 104px;
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    background-color: $primary-color-1;
+    color: $Neutral-color-5;
+    cursor: pointer;
+    &:hover{
+      background-color: $primary-color-3;
+    }
+  }
+  .card-profil-pic{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px dashed $primary-color-1;
+    background-color: $Neutral-color-4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: $primary-color-1;
+  }
+}
+
+textarea{
+  width: 100%;
+  height: 96px;
+  padding: 12px 24px;
+  font-family: $font;
+  border: 1px solid $Neutral-color-3;
+  border-radius: 8px;
+  overflow: auto;
+  outline: none;
+  box-shadow: none;
+  resize: none;
+  cursor: pointer;
+  &::placeholder{
+    font-family: $font;
+    font-weight: $light;
+    font-size: 1rem;
+    line-height: 24px;
+    color: $Neutral-color-2;
+  }
+  &:focus{
+    border:1px solid $primary-color-1;
+  }
+}
