@@ -2,7 +2,6 @@ import { formatDistanceToNow, toDate } from 'date-fns';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComment, editReplies, editComment, deleteComment } from '../store/actions/comment.action';
-import { } from '../store/actions/comment.action';
 import FormComment from './FormComment';
 import Likes from './Likes';
 
@@ -73,7 +72,6 @@ const Comment = ({ reply, comment }) => {
       <li className={reply ? 'subcard-container' : 'card-container'}>
 
         <div className='card-profil'>
-          {/* <img src={reply ? reply.user.png : comment.user.image.png} alt='profil-pic' /> */}
           <div className='card-profil-pic'>pic</div>
           <h2>{reply ? reply.user.username : comment.user.username}</h2>
           {user.username === (reply ? reply.user.username : comment.user.username) && <div className='you'>you</div>}

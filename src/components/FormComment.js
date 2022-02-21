@@ -29,7 +29,7 @@ const FormComment = ({ reply, comment }) => {
       setMyReply('');
     }
   }
-  //fix Id problem
+  
   const handleReply = async (e) => {
     e.preventDefault();
     if (!isEmpty(myReply)) {

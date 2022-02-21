@@ -13,7 +13,7 @@ const App = () => {
         <ul>
           {
             !isEmpty(comments) && (
-              comments.sort((a,b)=> a.createdAt - b.createdAt).map((comment) => (
+              comments.sort((a,b)=> b.score - a.score).map((comment) => (
 
                 <Comment comment={comment} key={comment.id + 1} />
 
