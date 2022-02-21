@@ -6,7 +6,7 @@ import App from './App';
 import { getComment } from './store/actions/comment.action';
 import { getUser } from './store/actions/user.action';
 import rootReducer from './store/reducers'
-import "/styles/index.scss"
+import "./styles/index.scss"
 
 const store = createStore(
   rootReducer
